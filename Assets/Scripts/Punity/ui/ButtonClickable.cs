@@ -110,6 +110,9 @@ namespace Classes
         
         protected virtual void TouchDown(MouseDownEvent e)
         {
+            
+            
+            
             if (!DisableButton)
             {
                 OnTouchDown();
