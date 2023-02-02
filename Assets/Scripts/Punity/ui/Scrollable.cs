@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace Punity
+namespace Punity.ui
 {
     public class Scrollable : ScrollView
     {

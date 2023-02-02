@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEngine;
 
-namespace Punity
+namespace Punity.animations
 {
     public class TweenHolder
     {
@@ -28,11 +26,7 @@ namespace Punity
             else
             {
                 _tweenList.Add(t);
-                
             }
-            
-            
-            
         }
 
         public void NewTween(float sec, Action startAction = null, Action exitAction = null,
@@ -68,7 +62,5 @@ namespace Punity
                 }
             }
         }
-        
-        
     }
 }

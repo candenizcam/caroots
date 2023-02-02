@@ -1,9 +1,10 @@
 ﻿using System;
+using Punity.tools;
 using UnityEngine;
 
-namespace DefaultNamespace.Punity
+namespace Punity.ObjectScripts
 {
-    public class WorldObject: MonoBehaviour
+    public class GameWorldClass: MonoBehaviour
     {
         protected Vector3 RecordedPositionVector;
         protected Vector3 RecordedScaleVector;
@@ -74,6 +75,15 @@ namespace DefaultNamespace.Punity
         protected virtual void AwakeFunction(){}
         protected virtual void UpdateFunction(){}
         
+
+        public static T Instantiate<T>(string name, Transform parent = null, Action<T> apply = null) where T : GameWorldClass, new()
+        {
+            var g = new GameObject(name);
+            g.transform.parent = parent;
+            var c = g.AddComponent<T>();
+            apply?.Invoke(c);
+            return c;
+        }
         
     }
 }

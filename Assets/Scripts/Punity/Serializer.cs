@@ -1,7 +1,6 @@
 ﻿using System;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
-using UnityEditor;
 using UnityEngine;
 
 namespace Punity
@@ -31,7 +30,7 @@ namespace Punity
                 file.Close();
                 return data;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 Debug.LogWarning("Error in loading serial data, resetting");
                 Reset<T>();

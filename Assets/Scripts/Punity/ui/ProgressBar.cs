@@ -1,9 +1,8 @@
 ﻿using System;
-using Punity.ui;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace DefaultNamespace
+namespace Punity.ui
 {
     public class ProgressBar: VisualElement
     {

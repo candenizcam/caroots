@@ -1,6 +1,6 @@
 ﻿using UnityEngine.UIElements.Experimental;
 
-namespace Punity
+namespace Punity.animations
 {
     public static class AnimationFunctions
     {

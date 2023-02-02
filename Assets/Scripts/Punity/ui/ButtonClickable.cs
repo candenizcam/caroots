@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace Classes
+namespace Punity.ui
 {
     public class ButtonClickable: VisualElement
     {

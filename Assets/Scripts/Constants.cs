@@ -1,7 +1,18 @@
 ﻿using UnityEngine.Device;
 
+namespace System.Runtime.CompilerServices
+{
+    public class IsExternalInit
+    {
+
+    }
+}
+
 namespace DefaultNamespace
 {
+    
+
+    
     public static class Constants
     {
         public const bool DeployMode = true; // true before deploy 

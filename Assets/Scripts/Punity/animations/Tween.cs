@@ -1,8 +1,6 @@
 ﻿using System;
-using Unity.VisualScripting;
-using UnityEngine;
 
-namespace Punity
+namespace Punity.animations
 {
     public class Tween
     {

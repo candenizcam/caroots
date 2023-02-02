@@ -1,15 +1,17 @@
-﻿using System;
-using Punity;
+﻿using DefaultNamespace;
+using Punity.animations;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace DefaultNamespace.Punity
+namespace Punity.ObjectScripts
 {
     public class MainScript: MonoBehaviour
     {
         protected Camera MainCamera;
         protected UIDocument UIDocument;
         protected TweenHolder TweenHolder;
+        public float WorldHeight => MainCamera.orthographicSize*2f;
+        public float WorldWidth => MainCamera.orthographicSize*MainCamera.aspect*2f;
         
         private void Awake()
         {

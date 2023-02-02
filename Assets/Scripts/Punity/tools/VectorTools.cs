@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace DefaultNamespace.Punity
+namespace Punity.tools
 {
     public static class VectorTools
     {
@@ -64,9 +64,32 @@ namespace DefaultNamespace.Punity
 
         public static float Angle(this Vector2 v)
         {
-            return (float)Math.Atan2(v.y, v.x)/6.282f*360f;
+            var f = (float) Math.Atan2(v.y, v.x)/6.282f*360f;
+            return (f>0f? f : f+360f)%360f;
         }
         
+        public static float AngleZ(this Vector3 v)
+        {
+            var f = (float) Math.Atan2(v.y, v.x)/6.282f*360f;
+            return (f>0f? f : f+360f)%360f;
+        }
+
+        public static string String(this Vector3 v, int round = 2, bool writeZ = true)
+        {
+            var s = $"x:{Math.Round(v.x, round)}, {Math.Round(v.y, round)}";
+            if (writeZ) s += $" ,{Math.Round(v.z, round)}";
+            return s;
+        }
+
+        public static float DotProduct(this Vector2 self, Vector2 other)
+        {
+            return self.x * other.x + self.y * other.y;
+        }
+        
+        public static float CrossProduct(this Vector2 self, Vector2 other)
+        {
+            return self.x * other.y - self.y * other.x;
+        }
         
         //public static Vector3 Multiply(this Vector3 v, Vector3 other)
         //{
