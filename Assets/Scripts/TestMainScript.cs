@@ -45,7 +45,7 @@ namespace DefaultNamespace
                     backgroundColor = new StyleColor(Color.magenta)
                 }
             };
-            _textBox.ChangeText(thisLevel.Clues[0]);
+            _textBox.ChangeText(thisLevel.Clues);
             
             UIDocument.rootVisualElement.Add(_textBox);
             UIDocument.rootVisualElement.Add(_headPicker);
