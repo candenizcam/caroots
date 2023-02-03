@@ -19,14 +19,15 @@ namespace DefaultNamespace
             Application.targetFrameRate = 60;
 
 
-            _headPicker = new HeadPicker(DataBase.LevelRecordsArray[0],572f,1029f)
+            var thisLevel = DataBase.LevelRecordsArray[0];
+            _headPicker = new HeadPicker(thisLevel,572f,1029f)
             {
                 style =
                 {
                     position = Position.Absolute,
                     bottom = 0f,
                     right = 54f,
-                    backgroundColor = new StyleColor(Color.blue)
+                    backgroundColor = new StyleColor(Color.gray)
                 }
             };
 
@@ -44,7 +45,7 @@ namespace DefaultNamespace
                     backgroundColor = new StyleColor(Color.magenta)
                 }
             };
-            _textBox.ChangeText("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+            _textBox.ChangeText(thisLevel.Clues[0]);
             
             UIDocument.rootVisualElement.Add(_textBox);
             UIDocument.rootVisualElement.Add(_headPicker);

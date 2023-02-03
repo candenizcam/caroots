@@ -1,4 +1,6 @@
 ﻿using DefaultNamespace.GameData;
+using Punity.ui;
+using UnityEngine;
 using UnityEngine.UIElements;
 
 namespace DefaultNamespace
@@ -24,7 +26,7 @@ namespace DefaultNamespace
                         height = height / 4f,
                         flexDirection = FlexDirection.Row,
                         position = Position.Absolute,
-                        top = i * (height / 4f),
+                        top = 74f + i * 206f,
                         alignItems = Align.Center,
                         justifyContent = Justify.SpaceAround
                     }
@@ -34,13 +36,32 @@ namespace DefaultNamespace
                 Add(thisRow);
                 for (var j = 0; j < c; j++)
                 {
-                    var p = new HeadFrame(thisLevel.Pickables[n],150f,210f);
+                    var p = new HeadFrame(thisLevel.Pickables[n],150f,181f);
+                    n += 1;
                     thisRow.Add(p);
                 }
             }
 
 
 
+            var b = new ButtonClickable("ui/düüme", Color.gray, MainButtonFunction)
+            {
+                style =
+                {
+                    bottom = 27f,
+                    right = 29f,
+                    position = Position.Absolute
+                }
+            };
+
+
+            Add(b);
+
+        }
+
+        private void MainButtonFunction()
+        {
+            
         }
     }
 }
