@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using DefaultNamespace.GameData;
 using Punity.ui;
+using UnityEngine;
 using UnityEngine.UIElements;
 
 namespace DefaultNamespace
@@ -23,13 +24,15 @@ namespace DefaultNamespace
 
 
             var bc = new ButtonClickable(FrameClick);
+            bc.StretchToParentSize();
+            Add(bc);
 
         }
 
 
         private void FrameClick()
         {
-            
+            Debug.Log("because of man");
         }
     }
 }
