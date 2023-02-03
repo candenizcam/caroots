@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Punity.ui;
+using UnityEngine;
 using UnityEngine.UIElements;
 
 namespace DefaultNamespace
@@ -19,9 +20,16 @@ namespace DefaultNamespace
                 style =
                 {
                     left = 26f,
-                    right = 26f,
                     top = 20f,
-                    bottom = 20f
+                    bottom = 20f,
+                    height = 220f,
+                    width = 1072,
+                    unityFontDefinition = QuickAccess.LoadFont("font/DMMono-Medium"),
+                    fontSize = 28f,
+                    unityTextAlign = TextAnchor.MiddleCenter,
+                    whiteSpace = WhiteSpace.Normal,
+                    backgroundColor = new StyleColor(Color.yellow),
+                    color = new StyleColor(Color.black)
                 }
             };
 

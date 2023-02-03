@@ -17,12 +17,20 @@ namespace DefaultNamespace
             var n = 0;
             for (var i = 0; i < r; i++)
             {
-                var thisRow = new VisualElement();
+                var thisRow = new VisualElement
+                {
+                    style =
+                    {
+                        height = height / 4f,
+                        flexDirection = FlexDirection.Row,
+                        position = Position.Absolute,
+                        top = i * (height / 4f),
+                        alignItems = Align.Center,
+                        justifyContent = Justify.SpaceAround
+                    }
+                };
+
                 thisRow.StretchToParentWidth();
-                thisRow.style.height = height / 4f;
-                thisRow.style.flexDirection = FlexDirection.Row;
-                thisRow.style.position = Position.Absolute;
-                thisRow.style.top = i * (height / 4f);
                 Add(thisRow);
                 for (var j = 0; j < c; j++)
                 {
