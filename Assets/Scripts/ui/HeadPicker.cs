@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using DefaultNamespace.GameData;
+using Punity.tools;
 using Punity.ui;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -20,6 +21,9 @@ namespace DefaultNamespace
             style.width = width;
             style.height = height;
             style.flexDirection = FlexDirection.Column;
+
+            var shuffledSeats = thisLevel.Pickables.ToList().Shuffled().ToList();
+            
 
             var n = 0;
             for (var i = 0; i < r; i++)
@@ -41,7 +45,7 @@ namespace DefaultNamespace
                 Add(thisRow);
                 for (var j = 0; j < c; j++)
                 {
-                    var p = new HeadFrame(thisLevel.Pickables[n],150f,181f);
+                    var p = new HeadFrame(shuffledSeats[n],150f,181f);
                     p.FrameFunction = (name, state) =>
                     {
 
