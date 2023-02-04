@@ -16,6 +16,8 @@ namespace DefaultNamespace
         public int FrameState = 0;
 
         private VisualElement _image;
+        private ButtonClickable _button;
+        
         
         public HeadFrame(string id, float width, float height, bool showText)
         {
@@ -24,7 +26,6 @@ namespace DefaultNamespace
 
             style.width = width;
             style.height = height;
-            style.backgroundImage = QuickAccess.LoadSpriteBg("ui/pickframe");
 
 
             _image = new VisualElement
@@ -40,7 +41,9 @@ namespace DefaultNamespace
                 }
             };
             
-            Add(_image);
+            
+            
+            
             if (showText)
             {
                 var bottomLabel = new Label()
@@ -67,12 +70,13 @@ namespace DefaultNamespace
             
 
 
-            var bc = new ButtonClickable("ui/button",Color.gray,FrameClick);
-            bc.StretchToParentSize();
-            bc.style.position = Position.Absolute;
-            bc.style.top = 0f;
-            bc.style.left = 0f;
-            Add(bc);
+            _button = new ButtonClickable("ui/button",Color.gray,FrameClick);
+            _button.StretchToParentSize();
+            _button.style.position = Position.Absolute;
+            _image.style.top =  width*0.1f;
+            _image.style.left =  width*0.1f;
+            Add(_button);
+            _button.Add(_image);
 
         }
 
@@ -87,18 +91,56 @@ namespace DefaultNamespace
         {
             if (FrameState == 0)
             {
-                _image.style.unityBackgroundImageTintColor = new StyleColor(Color.green);
-                FrameState = 1;
-            }else if (FrameState == 1)
+                SetGreen();
+                
+            }else if (FrameState == -1)
             {
-                _image.style.unityBackgroundImageTintColor = new StyleColor(Color.red);
-                FrameState = 2;
+                SetRed();
             }
             else
             {
-                _image.style.unityBackgroundImageTintColor = new StyleColor(Color.white);
-                FrameState = 0;
+                SetWhite();
+                
             }
+        }
+
+        public void SetWhite()
+        {
+            if (FrameState != 0)
+            {
+                _image.style.unityBackgroundImageTintColor = new StyleColor(Color.white);
+                _button.Disable(false);
+                _button.style.backgroundImage = QuickAccess.LoadSpriteBg("ui/button");
+                FrameState = 0;
+                
+            }
+            
+        }
+
+        public void SetGreen()
+        {
+            if (FrameState != 1)
+            {
+                _image.style.unityBackgroundImageTintColor = new StyleColor(Color.green);
+                _button.Disable(false);
+                _button.style.backgroundImage = QuickAccess.LoadSpriteBg("ui/button_green");
+                FrameState = 1;
+                
+            }
+            
+        }
+        
+        public void SetRed()
+        {
+            if (FrameState != -1)
+            {
+                _image.style.unityBackgroundImageTintColor = new StyleColor(new Color(.7f,.3f,.1f));
+                _button.Disable(true);
+                _button.style.backgroundImage = QuickAccess.LoadSpriteBg("ui/button_orange");
+                
+                FrameState = -1;
+            }
+            
         }
         
     }

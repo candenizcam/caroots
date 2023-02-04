@@ -24,22 +24,44 @@ namespace DefaultNamespace
             _thisLevel = DataBase.LevelRecordsArray[0];
             _headPicker = new HeadPicker(_thisLevel,614f,1036f)
             {
-                style =
-                {
-                    position = Position.Absolute,
-                    bottom = 0f,
-                    right = 54f
-                },
+                
                 SelectedFunction = (selectedId) =>
                 {
-                    if (_thisLevel.Answer == selectedId)
+                    jukebox.ayyuzlu.Pause();
+                    
+                    
+                    TweenHolder.NewTween(.5f,duringAction: (alpha) =>
                     {
-                        Debug.Log("success");
-                    }
-                    else
+                        _headPicker.UpDownAnimate(1f-alpha);
+                    },exitAction: () =>
                     {
-                        Debug.Log("failure");
-                    }
+                        jukebox.gulpembe.Play();
+                        if (_thisLevel.Answer == selectedId)
+                        {
+                            Debug.Log("success");
+                        }
+                        else
+                        {
+                            _headPicker.FalseGuessFunction(selectedId);
+                            Debug.Log("failure");
+                        }
+                    });
+                    
+                    TweenHolder.NewTween(15f,exitAction: () =>
+                    {
+                        
+                        jukebox.gulpembe.Pause();
+                        TweenHolder.NewTween(.5f,duringAction: (alpha) =>
+                        {
+                            _headPicker.UpDownAnimate(alpha);
+                        },exitAction: () =>
+                        {
+                            jukebox.ayyuzlu.Play();
+                        });
+                        
+                    });
+                    
+                    
                 }
             };
 

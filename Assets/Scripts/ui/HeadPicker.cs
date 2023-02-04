@@ -22,6 +22,9 @@ namespace DefaultNamespace
             style.height = height;
             style.flexDirection = FlexDirection.Column;
             style.backgroundImage = QuickAccess.LoadSpriteBg("ui/kumanda");
+            style.position = Position.Absolute;
+            style.bottom = 0f;
+            style.right = 54f;
 
             var shuffledSeats = thisLevel.Pickables.ToList().Shuffled().ToList();
             
@@ -51,6 +54,10 @@ namespace DefaultNamespace
                     var p = new HeadFrame(shuffledSeats[n],150f,150f,false);
                     p.FrameFunction = (name, state) =>
                     {
+                        if (state == 1)
+                        {
+                            _headFrames.Where(x => x.Id != name && x.FrameState==1).ToList().ForEach(x => x.SetWhite());
+                        }
 
                     };
                     n += 1;
@@ -88,6 +95,19 @@ namespace DefaultNamespace
                 var selected = hf.First();
                 SelectedFunction(selected.Id);
             }
+        }
+
+        public void FalseGuessFunction(string id)
+        {
+            foreach (var headFrame in _headFrames.Where(x => x.Id == id))
+            {
+                headFrame.SetRed();
+            }
+        }
+
+        public void UpDownAnimate(float alpha)
+        {
+            style.bottom = 0f - 1200f*(1f-alpha);
         }
     }
 }
