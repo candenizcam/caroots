@@ -17,7 +17,7 @@ namespace DefaultNamespace
 
         private VisualElement _image;
         
-        public HeadFrame(string id, float width, float height)
+        public HeadFrame(string id, float width, float height, bool showText)
         {
             Id = id;
             _charData = DataBase.PickableCharactersArray.First(x => x.Id == id);
@@ -31,8 +31,8 @@ namespace DefaultNamespace
             {
                 style =
                 {
-                    width = width,
-                    height = width,
+                    width = width*0.8f,
+                    height = width*0.8f,
                     position = Position.Absolute,
                     left = 0f,
                     top = 0f,
@@ -41,30 +41,33 @@ namespace DefaultNamespace
             };
             
             Add(_image);
-            
-            var bottomLabel = new Label()
+            if (showText)
             {
-                style =
+                var bottomLabel = new Label()
                 {
-                    width = width,
-                    height = height-width,
-                    position = Position.Absolute,
-                    left = 0f,
-                    bottom = 0f,
-                    unityFontDefinition = QuickAccess.LoadFont("font/DMMono-Medium"),
-                    fontSize = 24f,
-                    unityTextAlign = TextAnchor.MiddleCenter,
-                    whiteSpace = WhiteSpace.Normal,
-                    color = new StyleColor(Color.black),
-                    backgroundColor = new StyleColor(Color.cyan)
-                },
-                text = _charData.Name
-            };
+                    style =
+                    {
+                        width = width,
+                        height = height-width,
+                        position = Position.Absolute,
+                        left = 0f,
+                        bottom = 0f,
+                        unityFontDefinition = QuickAccess.LoadFont("font/DMMono-Medium"),
+                        fontSize = 24f,
+                        unityTextAlign = TextAnchor.MiddleCenter,
+                        whiteSpace = WhiteSpace.Normal,
+                        color = new StyleColor(Color.black),
+                        backgroundColor = new StyleColor(Color.cyan)
+                    },
+                    text = _charData.Name
+                };
             
-            Add(bottomLabel);
+                Add(bottomLabel);
+            }
+            
 
 
-            var bc = new ButtonClickable(FrameClick);
+            var bc = new ButtonClickable("ui/button",Color.gray,FrameClick);
             bc.StretchToParentSize();
             bc.style.position = Position.Absolute;
             bc.style.top = 0f;

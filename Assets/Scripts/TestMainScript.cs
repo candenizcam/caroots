@@ -12,6 +12,7 @@ namespace DefaultNamespace
         private TextBox _textBox;
         private HeadPicker _headPicker;
         private LevelRecord _thisLevel;
+        public SoundScript jukebox;
         
         protected override void InitializeMain()
         {
@@ -21,7 +22,7 @@ namespace DefaultNamespace
 
 
             _thisLevel = DataBase.LevelRecordsArray[0];
-            _headPicker = new HeadPicker(_thisLevel,572f,1029f)
+            _headPicker = new HeadPicker(_thisLevel,614f,1036f)
             {
                 style =
                 {
@@ -57,6 +58,8 @@ namespace DefaultNamespace
             
             UIDocument.rootVisualElement.Add(_textBox);
             UIDocument.rootVisualElement.Add(_headPicker);
+            
+            jukebox.ayyuzlu.Play();
         }
 
         protected override void UpdateMain()

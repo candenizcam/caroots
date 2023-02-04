@@ -33,20 +33,22 @@ namespace DefaultNamespace
                 {
                     style =
                     {
-                        height = height / 4f,
+                        height = 150f,
                         flexDirection = FlexDirection.Row,
                         position = Position.Absolute,
-                        top = 74f + i * 206f,
+                        top = 121f + i * 206f,
                         alignItems = Align.Center,
-                        justifyContent = Justify.SpaceAround
+                        justifyContent = Justify.SpaceBetween,
+                        width = 498f,
+                        left = 58
                     }
                 };
 
-                thisRow.StretchToParentWidth();
+                
                 Add(thisRow);
                 for (var j = 0; j < c; j++)
                 {
-                    var p = new HeadFrame(shuffledSeats[n],150f,181f);
+                    var p = new HeadFrame(shuffledSeats[n],150f,150f,false);
                     p.FrameFunction = (name, state) =>
                     {
 
@@ -63,8 +65,8 @@ namespace DefaultNamespace
             {
                 style =
                 {
-                    bottom = 27f,
-                    right = 29f,
+                    bottom = 37f,
+                    right = 60f,
                     position = Position.Absolute
                 }
             };
