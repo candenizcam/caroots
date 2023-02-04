@@ -43,8 +43,6 @@ namespace DefaultNamespace
             };
 
             
-            UIDocument.rootVisualElement.style.backgroundColor = new StyleColor(Color.red);
-
 
             _textBox = new TextBox(1214f, 264f)
             {
