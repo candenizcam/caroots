@@ -21,6 +21,7 @@ namespace DefaultNamespace
             style.width = width;
             style.height = height;
             style.flexDirection = FlexDirection.Column;
+            style.backgroundImage = QuickAccess.LoadSpriteBg("ui/kumanda");
 
             var shuffledSeats = thisLevel.Pickables.ToList().Shuffled().ToList();
             

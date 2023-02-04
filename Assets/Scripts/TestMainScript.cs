@@ -27,8 +27,7 @@ namespace DefaultNamespace
                 {
                     position = Position.Absolute,
                     bottom = 0f,
-                    right = 54f,
-                    backgroundColor = new StyleColor(Color.gray)
+                    right = 54f
                 },
                 SelectedFunction = (selectedId) =>
                 {
@@ -53,8 +52,7 @@ namespace DefaultNamespace
                 {
                     bottom = 60f,
                     left = 138f,
-                    position = Position.Absolute,
-                    backgroundColor = new StyleColor(Color.magenta)
+                    position = Position.Absolute
                 }
             };
             _textBox.ChangeText(_thisLevel.Clues);
