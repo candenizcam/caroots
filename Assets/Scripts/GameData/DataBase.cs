@@ -153,7 +153,7 @@
             },new[]
             {
                 new FlavourTextBox(FlavourTextPos.Host, "Hala çıkar mısınız","topraktan peki","yağmur yağdığında?",""),
-                new FlavourTextBox(FlavourTextPos.Guest, "Nasıl çıkmayalım","Çetin Bey, bizimki","solucanlık hali:","")
+                new FlavourTextBox(FlavourTextPos.Guest, "Nasıl çıkmayalım","Çetin Bey, bizimki","solucanlık hali.","")
             }),
             new FlavourText("a15",new string[]
             {"turtle"
