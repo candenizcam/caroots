@@ -22,7 +22,7 @@ namespace DefaultNamespace
 
 
             _thisLevel = DataBase.LevelRecordsArray[0];
-            _headPicker = new HeadPicker(_thisLevel,614f,1036f)
+            _headPicker = new HeadPicker(_thisLevel,614f,1215f)
             {
                 
                 SelectedFunction = (selectedId) =>

@@ -21,9 +21,9 @@ namespace DefaultNamespace
             style.width = width;
             style.height = height;
             style.flexDirection = FlexDirection.Column;
-            style.backgroundImage = QuickAccess.LoadSpriteBg("ui/kumanda");
+            style.backgroundImage = QuickAccess.LoadSpriteBg("ui/yazili");
             style.position = Position.Absolute;
-            style.bottom = 0f;
+            style.bottom = -179f;
             style.right = 54f;
 
             var shuffledSeats = thisLevel.Pickables.ToList().Shuffled().ToList();
@@ -72,7 +72,7 @@ namespace DefaultNamespace
             {
                 style =
                 {
-                    bottom = 37f,
+                    top = 935f,
                     right = 60f,
                     position = Position.Absolute
                 }
@@ -107,7 +107,7 @@ namespace DefaultNamespace
 
         public void UpDownAnimate(float alpha)
         {
-            style.bottom = 0f - 1200f*(1f-alpha);
+            style.bottom = -179f - 1200f*(1f-alpha);
         }
     }
 }
