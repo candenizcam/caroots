@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using DefaultNamespace.GameData;
 using Punity;
+using Punity.animations;
 using Punity.ObjectScripts;
+using Punity.tools;
 using Punity.ui;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -21,6 +24,8 @@ namespace DefaultNamespace
         private float _nothingTimer = 0f;
         private float _nothingTrigger = 5f;
         private bool _nothingWaiter = false;
+        private Tween _nothingTween = null;
+        private VisualElement _bubbleLayer;
         
         protected override void InitializeMain()
         {
@@ -38,6 +43,11 @@ namespace DefaultNamespace
             frame.style.height = 1080f;
             frame.style.position = Position.Absolute;
             frame.style.backgroundImage = QuickAccess.LoadSpriteBg("ui/tv");
+
+            _bubbleLayer = new VisualElement();
+            _bubbleLayer.StretchToParentSize();
+            UIDocument.rootVisualElement.Add(_bubbleLayer);
+            
             UIDocument.rootVisualElement.Add(frame);
 
             DoLevel();
@@ -45,6 +55,7 @@ namespace DefaultNamespace
             
             
             jukebox.ayyuzlu.Play();
+            _nothingWaiter = true;
         }
 
 
@@ -68,6 +79,7 @@ namespace DefaultNamespace
                 
                 SelectedFunction = (selectedId) =>
                 {
+                    TerminateNothinger();
                     jukebox.ayyuzlu.Pause();
                     
                     
@@ -118,6 +130,7 @@ namespace DefaultNamespace
                         },exitAction: () =>
                         {
                             jukebox.ayyuzlu.Play();
+                            _nothingWaiter = true;
                         });
                         
                     });
@@ -152,6 +165,7 @@ namespace DefaultNamespace
 
                 if (_nothingTimer >= _nothingTrigger)
                 {
+                    Debug.Log("işsiz işsiz oturuyo");
                     _nothingTimer = 0f;
                     NothingAction();
                 }
@@ -165,8 +179,46 @@ namespace DefaultNamespace
 
         private void NothingAction()
         {
+            var possibles = DataBase.FlavourTexts.Where(x =>
+                x.PossibleLevels.Length == 0 || x.PossibleLevels.Any(y => y == _thisLevel.Id)).ToList();
+
+            var random = possibles.PickRandom();
+            Debug.Log($"{random.Id}");
+            RecursiveTextBoxer(0,random);
             
         }
+
+        private void RecursiveTextBoxer(int index, FlavourText flavius)
+        {
+            _nothingWaiter = false;
+            if (flavius.FlavourTextBoxes.Length > index)
+            {
+                var n = new SpeechBubble(flavius.FlavourTextBoxes[index]);
+                _bubbleLayer.Add(n);
+                var nt = new Tween(4f,exitAction: () =>
+                {
+                    _bubbleLayer.Remove(n);
+                    RecursiveTextBoxer(index+1,flavius);
+                });
+                _nothingTween = nt;
+                TweenHolder.NewTween(nt);
+            }
+            else
+            {
+                _nothingWaiter = true;
+            }
+        }
+
+        private void TerminateNothinger()
+        {
+            if (_nothingTween is not null)
+            {
+                TweenHolder.RemoveTween(_nothingTween);
+                _bubbleLayer.Clear();
+                _nothingTween = null;
+            }
+        }
+        
         
     }
 }
