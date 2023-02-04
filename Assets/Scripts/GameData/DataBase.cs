@@ -52,14 +52,155 @@
 
         public static FlavourText[] FlavourTexts = new[]
         {
-            new FlavourText("test",new string[]
+            new FlavourText("a1",new string[]
             {
                 
             },new[]
             {
-                new FlavourTextBox(FlavourTextPos.Host, "","","","")
+                new FlavourTextBox(FlavourTextPos.Host, "Bu akşam maç varmış,","hiç sevmem. Zaten bu","milleti bu hale takım","tutturup getirdiler.")
+            }),
+            new FlavourText("a2",new string[]
+            {"worm"
+                
+            },new[]
+            {
+                new FlavourTextBox(FlavourTextPos.Host, "Bu ülkede haydutlar","sokakları serbest","dolaştıkça kardeşler","çok kopar be dostlar!")
+            }),
+            new FlavourText("a3",new string[]
+            {
+                
+            },new[]
+            {
+                new FlavourTextBox(FlavourTextPos.Host, "","Kim bu yakışıklı?","Aaa benmişim.","")
+            }),
+            new FlavourText("a4",new string[]
+            {
+                
+            },new[]
+            {
+                new FlavourTextBox(FlavourTextPos.Host, "İnsanın aklı","kemirmiyor böyle","olayları yahu.","")
+            }),
+            new FlavourText("a5",new string[]
+            {"cater"
+                
+            },new[]
+            {
+                new FlavourTextBox(FlavourTextPos.Host, "Benim böyle değişip","kopan dostlarım oldu.","Şimdi televizyonda","görünce arar sorar"),
+                new FlavourTextBox(FlavourTextPos.Host, "oldular yav Çetin'cim","nasılsın görüşmeyeli","diye tabii.","")
+            }),
+            new FlavourText("a6",new string[]
+            {"turtle"
+                
+            },new[]
+            {
+                new FlavourTextBox(FlavourTextPos.Host, "Büyüklerimiz çok","önemli efendim.","",""),
+                new FlavourTextBox(FlavourTextPos.Host, "Umarım biz de","yaşlanınca bu","kapılarda bizleri","bekleyenler olur.")
+            }),
+            new FlavourText("a7",new string[]
+            {"rooster"
+                
+            },new[]
+            {
+                new FlavourTextBox(FlavourTextPos.Host, "Domates","Biber","Patlıcan","")
+            }),
+            new FlavourText("a8",new string[]
+            {
+                
+            },new[]
+            {
+                new FlavourTextBox(FlavourTextPos.Host, "Geçen yeni bir kitaba","başladım, herkese","öneririm. Zaten bu","ülkeye okur lazım.")
+            }),
+            new FlavourText("a9",new string[]
+            {
+                
+            },new[]
+            {
+                new FlavourTextBox(FlavourTextPos.Host, "Çok korkuyorum bir","gün kapıdan benim","anam babam çıkacak","diye.")
+            }),
+            new FlavourText("a10",new string[]
+            {
+                
+            },new[]
+            {
+                new FlavourTextBox(FlavourTextPos.Host, "","Favori yönetmeniniz","kim efendim?",""),
+                new FlavourTextBox(FlavourTextPos.Guest, "","Kartal Tibet.","",""),
+                new FlavourTextBox(FlavourTextPos.Host, "","Ben değilim yani :(","","")
+            }),
+            new FlavourText("a11",new string[]
+            {
+                
+            },new[]
+            {
+                new FlavourTextBox(FlavourTextPos.Host, "Yıl 2000 olmadan","girer miyiz Avrupa","Birliği'ne? Kaç","senedir bekliyoruz.")
+            }),
+            new FlavourText("a12",new string[]
+            {
+                
+            },new[]
+            {
+                new FlavourTextBox(FlavourTextPos.Host, "Biz Mehmet Ali gibi","Yılbaşı Özel yapsak","rating rekoru kırarız","bence.")
+            }),
+            new FlavourText("a13",new string[]
+            {
+                
+            },new[]
+            {
+                new FlavourTextBox(FlavourTextPos.Host, "","Film gibi hayatlar","gerçekten.","")
+            }),
+            new FlavourText("a14",new string[]
+            {"worm"
+                
+            },new[]
+            {
+                new FlavourTextBox(FlavourTextPos.Host, "Hala çıkar mısınız","topraktan peki","yağmur yağdığında?",""),
+                new FlavourTextBox(FlavourTextPos.Guest, "Nasıl çıkmayalım","Çetin Bey, bizimki","solucanlık hali:","")
+            }),
+            new FlavourText("a15",new string[]
+            {"turtle"
+                
+            },new[]
+            {
+                new FlavourTextBox(FlavourTextPos.Host, "","O bıçaklar gerçek","mi oyuncak mı?",""),
+                new FlavourTextBox(FlavourTextPos.Guest, "","Gerçek.","",""),
+                new FlavourTextBox(FlavourTextPos.Host, "","Vay be.","","")
+            }),
+            new FlavourText("a16",new string[]
+            {"rooster"
+                
+            },new[]
+            {
+                new FlavourTextBox(FlavourTextPos.Host, "Benim de alarm saatim","bozuk, sizi mi işe","alsam acaba.","")
+            }),
+            new FlavourText("a17",new string[]
+            {"cater"
+                
+            },new[]
+            {
+                new FlavourTextBox(FlavourTextPos.Host, "","Çoluk çocuk var mı?","",""),
+                new FlavourTextBox(FlavourTextPos.Guest, "","Üç tane biri kozada,","ellerinizden öperler.","")
+            }),
+            new FlavourText("a18",new string[]
+            {
+                
+            },new[]
+            {
+                new FlavourTextBox(FlavourTextPos.Host, "Onlarca kişiyi burada","buluşturduk, sıradaki","siz olabilirsiniz.","")
+            }),
+            new FlavourText("a19",new string[]
+            {
+                
+            },new[]
+            {
+                new FlavourTextBox(FlavourTextPos.Host, "Bir alkış da","orkestramıza","gelmesin mi öyleyse?","")
+            }),
+            new FlavourText("a20",new string[]
+            {
+                
+            },new[]
+            {
+                new FlavourTextBox(FlavourTextPos.Host, "Yine ekonomik kriz","yine yoksulluk. Havuç","aslanın ağzında","gerçekten.")
             })
-
+            
         };
     }
 }
