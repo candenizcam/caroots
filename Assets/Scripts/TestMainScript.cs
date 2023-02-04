@@ -18,6 +18,10 @@ namespace DefaultNamespace
         public SoundScript jukebox;
         public DoorScript door;
         private int _levelIndex = 0;
+        private float _nothingTimer = 0f;
+        private float _nothingTrigger = 5f;
+        private bool _nothingWaiter = false;
+        
         protected override void InitializeMain()
         {
             
@@ -142,7 +146,25 @@ namespace DefaultNamespace
 
         protected override void UpdateMain()
         {
+            if (_nothingWaiter)
+            {
+                _nothingTimer += Time.deltaTime;
+
+                if (_nothingTimer >= _nothingTrigger)
+                {
+                    _nothingTimer = 0f;
+                    NothingAction();
+                }
+            }
+            else
+            {
+                _nothingTimer = 0f;
+            }
             
+        }
+
+        private void NothingAction()
+        {
             
         }
         
