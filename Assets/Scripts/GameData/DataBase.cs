@@ -49,5 +49,17 @@
                 "ramazan")
 
         };
+
+        public static FlavourText[] FlavourTexts = new[]
+        {
+            new FlavourText("test",new string[]
+            {
+                
+            },new[]
+            {
+                new FlavourTextBox(FlavourTextPos.Host, "","","","")
+            })
+
+        };
     }
 }
