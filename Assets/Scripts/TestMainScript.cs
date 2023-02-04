@@ -20,6 +20,7 @@ namespace DefaultNamespace
         private LevelRecord _thisLevel;
         public SoundScript jukebox;
         public DoorScript door;
+        public SofaScript sofaScript;
         private int _levelIndex = 0;
         private float _nothingTimer = 0f;
         private float _nothingTrigger = 5f;
@@ -74,12 +75,15 @@ namespace DefaultNamespace
             }
             
             _thisLevel = DataBase.LevelRecordsArray[_levelIndex];
+            sofaScript.ActivateVisual(_levelIndex);
+            door.ActivateVisual(_levelIndex);
             _headPicker = new HeadPicker(_thisLevel,614f,1215f)
             {
                 
                 SelectedFunction = (selectedId) =>
                 {
                     TerminateNothinger();
+                    _nothingWaiter = false;
                     jukebox.ayyuzlu.Pause();
                     
                     
@@ -92,20 +96,22 @@ namespace DefaultNamespace
                         jukebox.gulpembe.Play();
                         
                     });
-                    
+                    var rightGuess = _thisLevel.Answer == selectedId;
                     TweenHolder.NewTween(15f,duringAction: alpha=>
                         {
                             //1,1,4.4
                             var a1 = Math.Clamp(alpha * 3f, 0f, 1f);
                             var a2 = Math.Clamp(alpha * 3f-0.8f, 0f, 1f);
+                            var a3 = Math.Clamp(alpha * 3f-1.6f, 0f, 1f);
                             CameraPan(a1);
                             door.OpenAnimation(a2);
+                            door.RevealAnimation(a3,rightGuess);
                             
                             
                         },
                         exitAction: () =>
                     {
-                        
+                        door.RevealAnimation(0f,rightGuess);
                         jukebox.gulpembe.Pause();
                         if (_thisLevel.Answer == selectedId)
                         {
@@ -149,6 +155,11 @@ namespace DefaultNamespace
             
             UIDocument.rootVisualElement.Add(_textBox);
             UIDocument.rootVisualElement.Add(_headPicker);
+        }
+
+        private void StarterTexts()
+        {
+            
         }
 
         private void CameraPan(float alpha)

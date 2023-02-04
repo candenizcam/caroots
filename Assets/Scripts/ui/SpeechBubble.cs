@@ -23,8 +23,8 @@ namespace DefaultNamespace
             else
             {
                 style.backgroundImage = QuickAccess.LoadSpriteBg("ui/host");
-                style.left = 853f;
-                style.top = 144f;
+                style.left = 803f;
+                style.top = 184f;
             }
 
             var b = new Label
