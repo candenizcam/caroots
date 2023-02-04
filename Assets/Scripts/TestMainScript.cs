@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using DefaultNamespace.GameData;
 using Punity;
 using Punity.ObjectScripts;
@@ -15,6 +16,7 @@ namespace DefaultNamespace
         private LevelRecord _thisLevel;
         public SoundScript jukebox;
         public DoorScript door;
+        private int _levelIndex = 0;
         protected override void InitializeMain()
         {
             
@@ -25,9 +27,29 @@ namespace DefaultNamespace
             UIDocument.rootVisualElement.style.marginLeft = (Constants.UiWidth-1920f) * 0.5f;
             UIDocument.rootVisualElement.style.marginRight = (Constants.UiWidth-1920f) * 0.5f;
             Application.targetFrameRate = 60;
+            DoLevel();
+
+            
+            
+            jukebox.ayyuzlu.Play();
+        }
 
 
-            _thisLevel = DataBase.LevelRecordsArray[0];
+        private void KillThisLevel()
+        {
+            UIDocument.rootVisualElement.Remove(_textBox);
+            UIDocument.rootVisualElement.Remove(_headPicker);
+        }
+
+        private void DoLevel()
+        {
+            if (_levelIndex >= DataBase.LevelRecordsArray.Length)
+            {
+                Application.Quit();
+                return;
+            }
+            
+            _thisLevel = DataBase.LevelRecordsArray[_levelIndex];
             _headPicker = new HeadPicker(_thisLevel,614f,1215f)
             {
                 
@@ -39,24 +61,20 @@ namespace DefaultNamespace
                     TweenHolder.NewTween(.5f,duringAction: (alpha) =>
                     {
                         _headPicker.UpDownAnimate(1f-alpha);
+                        _textBox.UpDownAnimation(1f-alpha);
                     },exitAction: () =>
                     {
                         jukebox.gulpembe.Play();
-                        if (_thisLevel.Answer == selectedId)
-                        {
-                            Debug.Log("success");
-                        }
-                        else
-                        {
-                            _headPicker.FalseGuessFunction(selectedId);
-                            Debug.Log("failure");
-                        }
+                        
                     });
                     
                     TweenHolder.NewTween(15f,duringAction: alpha=>
                         {
+                            //2,2,3.4
                             var a1 = Math.Clamp(alpha * 3f, 0f, 1f);
-                            door.OpenAnimation(a1);
+                            var a2 = Math.Clamp(alpha * 3f-0.8f, 0f, 1f);
+                            CameraPan(a1);
+                            door.OpenAnimation(a2);
                             
                             
                         },
@@ -64,10 +82,25 @@ namespace DefaultNamespace
                     {
                         
                         jukebox.gulpembe.Pause();
+                        if (_thisLevel.Answer == selectedId)
+                        {
+                            KillThisLevel();
+                            _levelIndex += 1;
+                            DoLevel();
+
+                        }
+                        else
+                        {
+                            _headPicker.FalseGuessFunction(selectedId);
+                            Debug.Log("failure");
+                        }
+                        
+                        
                         TweenHolder.NewTween(.5f,duringAction: (alpha) =>
                         {
                             door.OpenAnimation(1f-alpha);
                             _headPicker.UpDownAnimate(alpha);
+                            _textBox.UpDownAnimation(alpha);
                         },exitAction: () =>
                         {
                             jukebox.ayyuzlu.Play();
@@ -83,22 +116,21 @@ namespace DefaultNamespace
 
             _textBox = new TextBox(1214f, 264f)
             {
-                style =
-                {
-                    bottom = 60f,
-                    left = 138f,
-                    position = Position.Absolute
-                }
+                
             };
             _textBox.ChangeText(_thisLevel.Clues);
             
             UIDocument.rootVisualElement.Add(_textBox);
             UIDocument.rootVisualElement.Add(_headPicker);
-            
-            jukebox.ayyuzlu.Play();
         }
 
-        protected override void UpdateMain()
+        private void CameraPan(float alpha)
+        {
+            MainCamera.orthographicSize = Constants.WorldHeight*(1f-alpha) + 4.4f*alpha;
+            MainCamera.transform.position = new Vector3(1f*alpha,1f*alpha,-10f);
+        }
+
+            protected override void UpdateMain()
         {
             
             

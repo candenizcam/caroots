@@ -14,7 +14,10 @@ namespace DefaultNamespace
             style.width = width;
             style.height = height;
             style.backgroundImage = QuickAccess.LoadSpriteBg("ui/rainbow");
-
+            style.bottom = 60f;
+            style.left = 138f;
+            style.position = Position.Absolute;
+            
 
             _textLabel = new Label
             {
@@ -41,6 +44,11 @@ namespace DefaultNamespace
         public void ChangeText(string t)
         {
             _textLabel.text = t;
+        }
+
+        public void UpDownAnimation(float alpha)
+        {
+            style.opacity = alpha;
         }
     }
 }

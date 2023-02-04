@@ -108,6 +108,9 @@ namespace DefaultNamespace
         public void UpDownAnimate(float alpha)
         {
             style.bottom = -179f - 1200f*(1f-alpha);
+            
         }
+        
+        
     }
 }
