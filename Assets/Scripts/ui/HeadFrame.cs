@@ -1,8 +1,10 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using DefaultNamespace.GameData;
 using Punity.ui;
 using UnityEngine;
 using UnityEngine.UIElements;
+using Random = UnityEngine.Random;
 
 namespace DefaultNamespace
 {
@@ -10,7 +12,11 @@ namespace DefaultNamespace
     {
         public readonly string Id;
         private PickableCharacters _charData;
+        public Action<string, int> FrameFunction = (a,b)=>{};
+        public int FrameState = 0;
 
+        private VisualElement _image;
+        
         public HeadFrame(string id, float width, float height)
         {
             Id = id;
@@ -21,7 +27,7 @@ namespace DefaultNamespace
             style.backgroundImage = QuickAccess.LoadSpriteBg("ui/pickframe");
 
 
-            var image = new VisualElement
+            _image = new VisualElement
             {
                 style =
                 {
@@ -34,7 +40,7 @@ namespace DefaultNamespace
                 }
             };
             
-            Add(image);
+            Add(_image);
             
             var bottomLabel = new Label()
             {
@@ -70,7 +76,27 @@ namespace DefaultNamespace
 
         private void FrameClick()
         {
-            Debug.Log("because of man");
+            UpdateState();
+            FrameFunction(Id, FrameState);
         }
+
+        private void UpdateState()
+        {
+            if (FrameState == 0)
+            {
+                _image.style.unityBackgroundImageTintColor = new StyleColor(Color.green);
+                FrameState = 1;
+            }else if (FrameState == 1)
+            {
+                _image.style.unityBackgroundImageTintColor = new StyleColor(Color.red);
+                FrameState = 2;
+            }
+            else
+            {
+                _image.style.unityBackgroundImageTintColor = new StyleColor(Color.white);
+                FrameState = 0;
+            }
+        }
+        
     }
 }

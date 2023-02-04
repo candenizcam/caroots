@@ -1,4 +1,7 @@
-﻿using DefaultNamespace.GameData;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using DefaultNamespace.GameData;
 using Punity.ui;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -7,6 +10,8 @@ namespace DefaultNamespace
 {
     public class HeadPicker : VisualElement
     {
+        private List<HeadFrame> _headFrames = new();
+        public Action<string> SelectedFunction;
         public HeadPicker(LevelRecord thisLevel, float width, float height)
         {
             var r = 4;
@@ -37,14 +42,19 @@ namespace DefaultNamespace
                 for (var j = 0; j < c; j++)
                 {
                     var p = new HeadFrame(thisLevel.Pickables[n],150f,181f);
+                    p.FrameFunction = (name, state) =>
+                    {
+
+                    };
                     n += 1;
+                    _headFrames.Add(p);
                     thisRow.Add(p);
                 }
             }
 
 
 
-            var b = new ButtonClickable("ui/düüme", Color.gray, MainButtonFunction)
+            var b = new ButtonClickable("ui/acalim", Color.gray, MainButtonFunction)
             {
                 style =
                 {
@@ -61,7 +71,16 @@ namespace DefaultNamespace
 
         private void MainButtonFunction()
         {
-            
+            var hf = _headFrames.Where(x => x.FrameState == 1).ToList();
+            if (hf.Count != 1)
+            {
+                Debug.LogWarning("problem, not one selected");
+            }
+            else
+            {
+                var selected = hf.First();
+                SelectedFunction(selected.Id);
+            }
         }
     }
 }

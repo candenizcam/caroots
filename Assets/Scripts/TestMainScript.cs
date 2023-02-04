@@ -11,6 +11,7 @@ namespace DefaultNamespace
 
         private TextBox _textBox;
         private HeadPicker _headPicker;
+        private LevelRecord _thisLevel;
         
         protected override void InitializeMain()
         {
@@ -19,8 +20,8 @@ namespace DefaultNamespace
             Application.targetFrameRate = 60;
 
 
-            var thisLevel = DataBase.LevelRecordsArray[0];
-            _headPicker = new HeadPicker(thisLevel,572f,1029f)
+            _thisLevel = DataBase.LevelRecordsArray[0];
+            _headPicker = new HeadPicker(_thisLevel,572f,1029f)
             {
                 style =
                 {
@@ -28,6 +29,17 @@ namespace DefaultNamespace
                     bottom = 0f,
                     right = 54f,
                     backgroundColor = new StyleColor(Color.gray)
+                },
+                SelectedFunction = (selectedId) =>
+                {
+                    if (_thisLevel.Answer == selectedId)
+                    {
+                        Debug.Log("success");
+                    }
+                    else
+                    {
+                        Debug.Log("failure");
+                    }
                 }
             };
 
@@ -45,7 +57,7 @@ namespace DefaultNamespace
                     backgroundColor = new StyleColor(Color.magenta)
                 }
             };
-            _textBox.ChangeText(thisLevel.Clues);
+            _textBox.ChangeText(_thisLevel.Clues);
             
             UIDocument.rootVisualElement.Add(_textBox);
             UIDocument.rootVisualElement.Add(_headPicker);
