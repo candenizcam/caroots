@@ -4,18 +4,18 @@
     {
         public static PickableCharacters[] PickableCharactersArray = new  PickableCharacters[] 
         {
-            new ("karahalka","karahalka","frameImages/karahalka.png"),
-            new ("ogulcan","oğulcan","frameImages/ogulcan.png"),
-            new ("sümbül","sümbül","frameImages/sümbül.png"),
-            new ("cabbar","cabbar","frameImages/cabbar.png"),
-            new ("diken","diken","frameImages/diken.png"),
-            new ("altintekme","altıntekme","frameImages/altintekme.png"),
-            new ("saban","şaban","frameImages/saban.png"),
-            new ("ramazan","ramazan","frameImages/ramazan.png"),
-            new ("abuzer","abuzer","frameImages/abuzer.png"),
-            new ("recep","recep","frameImages/recep.png"),
-            new ("tosun","tosun","frameImages/tosun.png"),
-            new ("nisa","nisa","frameImages/nisa.png")
+            new ("karahalka","karahalka","frameImages/karahalka"),
+            new ("ogulcan","oğulcan","frameImages/ogulcan"),
+            new ("sümbül","sümbül","frameImages/sümbül"),
+            new ("cabbar","cabbar","frameImages/cabbar"),
+            new ("diken","diken","frameImages/diken"),
+            new ("altintekme","altıntekme","frameImages/altintekme"),
+            new ("saban","şaban","frameImages/saban"),
+            new ("ramazan","ramazan","frameImages/ramazan"),
+            new ("abuzer","abuzer","frameImages/abuzer"),
+            new ("recep","recep","frameImages/recep"),
+            new ("tosun","tosun","frameImages/tosun"),
+            new ("nisa","nisa","frameImages/nisa")
         };
         
         
