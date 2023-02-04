@@ -13,6 +13,7 @@ namespace DefaultNamespace
         {
             style.width = width;
             style.height = height;
+            style.backgroundImage = QuickAccess.LoadSpriteBg("ui/rainbow");
 
 
             _textLabel = new Label
@@ -28,7 +29,6 @@ namespace DefaultNamespace
                     fontSize = 28f,
                     unityTextAlign = TextAnchor.MiddleCenter,
                     whiteSpace = WhiteSpace.Normal,
-                    backgroundColor = new StyleColor(Color.yellow),
                     color = new StyleColor(Color.black)
                 }
             };
