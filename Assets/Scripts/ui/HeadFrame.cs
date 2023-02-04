@@ -32,8 +32,8 @@ namespace DefaultNamespace
             {
                 style =
                 {
-                    width = width*0.8f,
-                    height = width*0.8f,
+                    width = width,
+                    height = width,
                     position = Position.Absolute,
                     left = 0f,
                     top = 0f,
@@ -73,8 +73,8 @@ namespace DefaultNamespace
             _button = new ButtonClickable("ui/button",Color.gray,FrameClick);
             _button.StretchToParentSize();
             _button.style.position = Position.Absolute;
-            _image.style.top =  width*0.1f;
-            _image.style.left =  width*0.1f;
+            _image.style.top =  0f;
+            _image.style.left =  0f;
             Add(_button);
             _button.Add(_image);
 
