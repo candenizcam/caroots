@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using DefaultNamespace.GameData;
 using Punity;
 using Punity.ObjectScripts;
+using Punity.ui;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -27,6 +28,14 @@ namespace DefaultNamespace
             UIDocument.rootVisualElement.style.marginLeft = (Constants.UiWidth-1920f) * 0.5f;
             UIDocument.rootVisualElement.style.marginRight = (Constants.UiWidth-1920f) * 0.5f;
             Application.targetFrameRate = 60;
+
+            var frame = new VisualElement();
+            frame.style.width = 1920f;
+            frame.style.height = 1080f;
+            frame.style.position = Position.Absolute;
+            frame.style.backgroundImage = QuickAccess.LoadSpriteBg("ui/tv");
+            UIDocument.rootVisualElement.Add(frame);
+
             DoLevel();
 
             
@@ -70,7 +79,7 @@ namespace DefaultNamespace
                     
                     TweenHolder.NewTween(15f,duringAction: alpha=>
                         {
-                            //2,2,3.4
+                            //1,1,4.4
                             var a1 = Math.Clamp(alpha * 3f, 0f, 1f);
                             var a2 = Math.Clamp(alpha * 3f-0.8f, 0f, 1f);
                             CameraPan(a1);
@@ -101,6 +110,7 @@ namespace DefaultNamespace
                             door.OpenAnimation(1f-alpha);
                             _headPicker.UpDownAnimate(alpha);
                             _textBox.UpDownAnimation(alpha);
+                            CameraPan(1f-alpha);
                         },exitAction: () =>
                         {
                             jukebox.ayyuzlu.Play();
@@ -130,7 +140,7 @@ namespace DefaultNamespace
             MainCamera.transform.position = new Vector3(1f*alpha,1f*alpha,-10f);
         }
 
-            protected override void UpdateMain()
+        protected override void UpdateMain()
         {
             
             
