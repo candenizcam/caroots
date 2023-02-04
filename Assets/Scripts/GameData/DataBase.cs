@@ -27,25 +27,25 @@
                 "karahalka","ogulcan","sümbül","cabbar",
                 "diken","altintekme","saban","ramazan",
                 "abuzer","recep","tosun","nisa"},
-                "Çetin Bey bana bu şansı verdiğin için sana şükürler olsun! Asla unutamam o lanet günü.\nYağmur sonrası hava almaya çıkmıştık yapışık ikiz kardeşimle... Çıkmaz olaydık!\nBir kuş saldırısı vücutlarımızı ayırdı, su başmış sokakta farklı taraflara savrulduk.\nO hep denize meraklıydı, korsan filmleri izlerdi tüm gün, yüzdü gitti. Bense kayboldum.",
+                "Çetin Bey bana bu şansı verdiğin için sana şükürler olsun! Asla\nunutamam o lanet günü.Yağmur sonrası hava almaya çıkmıştık\nyapışık ikiz kardeşimle... Çıkmaz olaydık! Bir kuş saldırısı\nvücutlarımızı ayırdı, su başmış sokakta farklı taraflara\nsavrulduk. O hep denize meraklıydı, korsan filmleri izlerdi\ntüm gün, yüzdü gitti. Bense battım sulara ve kayboldum..",
                 "karahalka"),
             new("cater",new[] {
                     "karahalka","ogulcan","sümbül","cabbar",
                     "diken","altintekme","saban","ramazan",
                     "abuzer","recep","tosun","nisa"},
-                "Buraya başvurmaya çekindim Çetin Bey ama dayanamadım, dostumu çok özledim.\nÇocukluk arkadaşıyız biz, birlikte büyüdük, birlikte ne yapraklar yedik!\nAma son zamanlarda o çok değişti, bambaşka birine dönüştü.Paşamın burnu havalarda!\nO masum mahalle çocuğu gitti, yerini gösterişli biri aldı. Böyle lüks kılıklar...",
+                "Buraya başvurmaya çekindim Çetin Bey ama dayanamadım, dostumu\nçok özledim. Çocukluk arkadaşıyız biz, birlikte büyüdük,\nbirlikte ne yapraklar yedik! Ama son zamanlarda o çok değişti,\nbambaşka birine dönüştü.Paşamın burnu havalarda! O masum\nmahalle çocuğu gitti, yerini gösterişli biri aldı. Böyle lüks\nkılıklar, aksesuarlar falan...",
                 "sümbül"),
             new("turtle",new[] {
                     "karahalka","ogulcan","sümbül","cabbar",
                     "diken","altintekme","saban","ramazan",
                     "abuzer","recep","tosun","nisa"},
-                "Buraya, genç bir ninja olduğum günlerden olan ustamı aramaya geldim Çetin Bey.\nO bizi lağımlardan topladı ve eğitti. Ben ve kardeşlerim ona herşeyi borçluyuz.\nOnun sopasından çok dayak yedik ama onun elinden de çok peynir yedik.\nYaşlı ustamı tekrar görüp elini öpmek istiyorum!",
+                "Buraya, genç bir ninja olduğum günlerden olan ustamı aramaya\ngeldim Çetin Bey. O bizi lağımlardan topladı ve eğitti. Ben ve\nkardeşlerim ona herşeyi borçluyuz. Onun sopasından çok dayak\nyedik ama onun elinden de çok peynir yedik. Yaşlı ustamı\ntekrar görüp elini öpmek istiyorum!",
                 "diken"),
             new("rooster",new[] {
                     "karahalka","ogulcan","sümbül","cabbar",
                     "diken","altintekme","saban","ramazan",
                     "abuzer","recep","tosun","nisa"},
-                "Köyden göçeli kaç yıl oldu bilmiyorum ama köylümü arıyorum Çetin Abi.\nGörüşmeyeli mevsimler geçti, hiç de haber göndermedi ama ben ona küsmedim.\nDün yine oyunlarımızı andım... Köy meydanında şafak vakti düelloları oynardık.\nÇok özledim be arkadaşım, bir haber yolla!",
+                "Köyden göçeli kaç yıl oldu bilmiyorum ama köylümü arıyorum\nÇetin Abi. Görüşmeyeli mevsimler geçti, hiç de haber göndermedi\nama ben ona küsmedim. Dün yine oyunlarımızı andım... Köy\nmeydanında şafak vakti düelloları oynardık. Çok özledim be\narkadaşım, bir haber yolla!",
                 "ramazan")
 
         };
