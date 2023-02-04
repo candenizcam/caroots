@@ -1,4 +1,5 @@
-﻿using DefaultNamespace.GameData;
+﻿using System;
+using DefaultNamespace.GameData;
 using Punity;
 using Punity.ObjectScripts;
 using UnityEngine;
@@ -13,11 +14,16 @@ namespace DefaultNamespace
         private HeadPicker _headPicker;
         private LevelRecord _thisLevel;
         public SoundScript jukebox;
-        
+        public DoorScript door;
         protected override void InitializeMain()
         {
+            
+            
+            
             UIDocument.rootVisualElement.style.paddingBottom = Constants.UnsafeBottomUi;
             UIDocument.rootVisualElement.style.paddingTop = Constants.UnsafeTopUi;
+            UIDocument.rootVisualElement.style.marginLeft = (Constants.UiWidth-1920f) * 0.5f;
+            UIDocument.rootVisualElement.style.marginRight = (Constants.UiWidth-1920f) * 0.5f;
             Application.targetFrameRate = 60;
 
 
@@ -47,12 +53,20 @@ namespace DefaultNamespace
                         }
                     });
                     
-                    TweenHolder.NewTween(15f,exitAction: () =>
+                    TweenHolder.NewTween(15f,duringAction: alpha=>
+                        {
+                            var a1 = Math.Clamp(alpha * 3f, 0f, 1f);
+                            door.OpenAnimation(a1);
+                            
+                            
+                        },
+                        exitAction: () =>
                     {
                         
                         jukebox.gulpembe.Pause();
                         TweenHolder.NewTween(.5f,duringAction: (alpha) =>
                         {
+                            door.OpenAnimation(1f-alpha);
                             _headPicker.UpDownAnimate(alpha);
                         },exitAction: () =>
                         {
