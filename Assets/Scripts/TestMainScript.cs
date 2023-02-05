@@ -154,7 +154,10 @@ namespace DefaultNamespace
 
             _textBox = new TextBox(1214f, 264f)
             {
-                
+                style =
+                {
+                    backgroundColor = new Color(1f, 1f, 0.8f)
+                }
             };
             
             _pretextInDex = -1;
