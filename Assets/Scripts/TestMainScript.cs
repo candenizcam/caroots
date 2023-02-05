@@ -121,6 +121,20 @@ namespace DefaultNamespace
                     });
                     var rightGuess = _thisLevel.Answer == selectedId;
                     door.SetCloudVectors();
+                    
+                    
+                    TweenHolder.NewTween(10f,exitAction: () =>
+                    {
+                        if (_thisLevel.Answer == selectedId)
+                        {
+                            jukebox.claps.Play();
+                        }
+                        else
+                        {
+                            jukebox.aaw.Play();
+                        }
+                    });
+                    
                     TweenHolder.NewTween(15f,duringAction: alpha=>
                         {
                             //1,1,4.4
@@ -179,6 +193,7 @@ namespace DefaultNamespace
 
 
                             t = _thisLevel.WinFlavour;
+                            
 
                         }
                         else
@@ -219,6 +234,7 @@ namespace DefaultNamespace
                                 });
                             };
                             t = DataBase.NotFoundTexts.ToList().Shuffled().First();
+                            
                         }
                         
                         
