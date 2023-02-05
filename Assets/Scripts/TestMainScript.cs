@@ -49,6 +49,7 @@ namespace DefaultNamespace
             var frame = new TVScreen();
             frame.ButtonAction = () =>
             {
+                /*
                 TweenHolder.NewTween(1f,duringAction: alpha =>
                 {
                     
@@ -60,8 +61,12 @@ namespace DefaultNamespace
                     frame.GoinDown = !frame.GoinDown;
                 });
                 frame.DisableButton(true);
-                
+                */
 
+                _textBox.visible = !_textBox.visible;
+                _headPicker.visible = !_headPicker.visible;
+                _nextButton.visible = !_nextButton.visible;
+                _carrotHolder.visible = !_carrotHolder.visible;
             };
             
 
