@@ -119,21 +119,25 @@ namespace DefaultNamespace
                         
                     });
                     var rightGuess = _thisLevel.Answer == selectedId;
+                    door.SetCloudVectors();
                     TweenHolder.NewTween(15f,duringAction: alpha=>
                         {
                             //1,1,4.4
                             var a1 = Math.Clamp(alpha * 3f, 0f, 1f);
                             var a2 = Math.Clamp(alpha * 3f-0.8f, 0f, 1f);
                             var a3 = Math.Clamp(alpha * 3f-1.6f, 0f, 1f);
+                            var a4 = Math.Clamp(alpha * 3f-1.2f, 0f, 1f);
                             CameraPan(a1);
                             door.OpenAnimation(a2);
                             door.RevealAnimation(a3,rightGuess);
+                            door.CloudAnimation(a4);
                             
                             
                         },
                         exitAction: () =>
                     {
                         door.RevealAnimation(0f,rightGuess);
+                        
                         jukebox.gulpembe.Pause();
                         if (_thisLevel.Answer == selectedId)
                         {
