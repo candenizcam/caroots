@@ -270,7 +270,12 @@ MonoBehaviour:
   - {fileID: 2427856}
   - {fileID: 1484401266}
   - {fileID: 793298588}
-  bulutlar: []
+  bulutlar:
+  - {fileID: 172012094}
+  - {fileID: 1730923996}
+  - {fileID: 725910124}
+  - {fileID: 1048173622}
+  - {fileID: 128800104}
 --- !u!1 &128800102
 GameObject:
   m_ObjectHideFlags: 0
