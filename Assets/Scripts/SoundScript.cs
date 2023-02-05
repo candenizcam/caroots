@@ -7,7 +7,8 @@ namespace DefaultNamespace
     {
         public AudioSource gulpembe;
         public AudioSource ayyuzlu;
-        
+        public AudioSource claps;
+        public AudioSource aaw;
         public SoundScript()
         {
             
