@@ -41,11 +41,24 @@ namespace DefaultNamespace
             UIDocument.rootVisualElement.style.marginRight = (Constants.UiWidth-1920f) * 0.5f;
             Application.targetFrameRate = 60;
 
-            var frame = new VisualElement();
-            frame.style.width = 1920f;
-            frame.style.height = 1080f;
-            frame.style.position = Position.Absolute;
-            frame.style.backgroundImage = QuickAccess.LoadSpriteBg("ui/tv");
+            var frame = new TVScreen();
+            frame.ButtonAction = () =>
+            {
+                TweenHolder.NewTween(1f,duringAction: alpha =>
+                {
+                    
+                    
+                    frame.UpDown(1f-alpha);
+                },exitAction: () =>
+                {
+                    frame.DisableButton(false);
+                    frame.GoinDown = !frame.GoinDown;
+                });
+                frame.DisableButton(true);
+                
+
+            };
+            
 
             _bubbleLayer = new VisualElement();
             _bubbleLayer.StretchToParentSize();
@@ -61,7 +74,7 @@ namespace DefaultNamespace
             
             
             jukebox.ayyuzlu.Play();
-            _nothingWaiter = true;
+            //_nothingWaiter = true;
         }
 
 
@@ -222,6 +235,7 @@ namespace DefaultNamespace
         {
             if (_nothingWaiter)
             {
+                
                 _nothingTimer += Time.deltaTime;
 
                 if (_nothingTimer >= _nothingTrigger)
