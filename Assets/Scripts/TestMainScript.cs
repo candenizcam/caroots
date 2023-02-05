@@ -32,6 +32,7 @@ namespace DefaultNamespace
         private CarrotHolder _carrotHolder;
         private ButtonClickable _sadEnd;
         private ButtonClickable _happyEnd;
+        private Action _otherNextAction;
         
         protected override void InitializeMain()
         {
@@ -139,63 +140,92 @@ namespace DefaultNamespace
                         door.RevealAnimation(0f,rightGuess);
                         
                         jukebox.gulpembe.Pause();
+
+
+                        var t = "";
                         if (_thisLevel.Answer == selectedId)
                         {
-                            
-                            _levelIndex += 1;
-                            if (_levelIndex >= DataBase.LevelRecordsArray.Length)
+                            _otherNextAction = () =>
                             {
-                                _happyEnd = new ButtonClickable("endings/good", Color.white, clickAction: () =>
+                                _levelIndex += 1;
+                                if (_levelIndex >= DataBase.LevelRecordsArray.Length)
                                 {
-                                    UIDocument.rootVisualElement.Remove(_happyEnd);
-                                    Replay();
+                                    _happyEnd = new ButtonClickable("endings/good", Color.white, clickAction: () =>
+                                    {
+                                        UIDocument.rootVisualElement.Remove(_happyEnd);
+                                        Replay();
+                                    });
+                                    _happyEnd.style.position = Position.Absolute;
+                                    UIDocument.rootVisualElement.Add(_happyEnd);
+                                }
+                                else
+                                {
+                                    KillThisLevel();
+                                    DoLevel();
+                                }
+                                
+                                
+                                TweenHolder.NewTween(.5f,duringAction: (alpha) =>
+                                {
+                                    door.OpenAnimation(1f-alpha);
+                                    _headPicker.UpDownAnimate(alpha);
+                                    _textBox.UpDownAnimation(alpha);
+                                    CameraPan(1f-alpha);
+                                },exitAction: () =>
+                                {
+                                    jukebox.ayyuzlu.Play();
                                 });
-                                _happyEnd.style.position = Position.Absolute;
-                                UIDocument.rootVisualElement.Add(_happyEnd);
-                            }
-                            else
-                            {
-                                KillThisLevel();
-                                DoLevel();
-                            }
-                            
+                            };
+
+
+                            t = _thisLevel.WinFlavour;
 
                         }
                         else
-                        {
-                            _headPicker.FalseGuessFunction(selectedId);
+                        { // faiulre
+                            _otherNextAction = () =>
+                            {
+                                _headPicker.FalseGuessFunction(selectedId);
 
-                            if (_carrotHolder.CarrotNumber <= 0)
-                            {
-                                
-                                _sadEnd = new ButtonClickable("endings/sad", Color.white, clickAction: () =>
+                                if (_carrotHolder.CarrotNumber <= 0)
                                 {
-                                    UIDocument.rootVisualElement.Remove(_sadEnd);
-                                    Replay();
+                                
+                                    _sadEnd = new ButtonClickable("endings/sad", Color.white, clickAction: () =>
+                                    {
+                                        UIDocument.rootVisualElement.Remove(_sadEnd);
+                                        Replay();
+                                    });
+                                    _sadEnd.style.position = Position.Absolute;
+                                    UIDocument.rootVisualElement.Add(_sadEnd);
+                                }
+                                else
+                                {
+                                    _carrotHolder.ChangeCarrots(_carrotHolder.CarrotNumber-1);
+                                }
+                                
+                                TweenHolder.NewTween(.5f,duringAction: (alpha) =>
+                                {
+                                    door.OpenAnimation(1f-alpha);
+                                    _headPicker.UpDownAnimate(alpha);
+                                    _textBox.UpDownAnimation(alpha);
+                                    _textBox.ChangeText(_thisLevel.Clues);
+                                    CameraPan(1f-alpha);
+                                },exitAction: () =>
+                                {
+                                    jukebox.ayyuzlu.Play();
                                 });
-                                _sadEnd.style.position = Position.Absolute;
-                                UIDocument.rootVisualElement.Add(_sadEnd);
-                            }
-                            else
-                            {
-                                _carrotHolder.ChangeCarrots(_carrotHolder.CarrotNumber-1);
-                            }
-                            
-                            Debug.Log("failure");
+                            };
+                            t = DataBase.NotFoundTexts.ToList().Shuffled().First();
                         }
                         
                         
-                        TweenHolder.NewTween(.5f,duringAction: (alpha) =>
-                        {
-                            door.OpenAnimation(1f-alpha);
-                            _headPicker.UpDownAnimate(alpha);
-                            _textBox.UpDownAnimation(alpha);
-                            CameraPan(1f-alpha);
-                        },exitAction: () =>
-                        {
-                            jukebox.ayyuzlu.Play();
-                        });
+                        UIDocument.rootVisualElement.Add(_nextButton);
+                        _textBox.ChangeText(t);
+                        _textBox.UpDownAnimation(1f);
                         
+
+                        
+
                     });
                     
                     
@@ -340,6 +370,12 @@ namespace DefaultNamespace
             {
                 _pretextInDex+=1;
                 StarterTexts();
+            }
+            else
+            {
+                UIDocument.rootVisualElement.Remove(_nextButton);
+                _otherNextAction();
+                
             }
         }
         
