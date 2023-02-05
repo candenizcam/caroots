@@ -137,10 +137,9 @@ namespace DefaultNamespace
                         },
                         exitAction: () =>
                     {
-                        door.RevealAnimation(0f,rightGuess);
+                        
                         
                         jukebox.gulpembe.Pause();
-
 
                         var t = "";
                         if (_thisLevel.Answer == selectedId)
@@ -153,6 +152,7 @@ namespace DefaultNamespace
                                     _happyEnd = new ButtonClickable("endings/good", Color.white, clickAction: () =>
                                     {
                                         UIDocument.rootVisualElement.Remove(_happyEnd);
+                                        _levelIndex = 0;
                                         Replay();
                                     });
                                     _happyEnd.style.position = Position.Absolute;
@@ -163,7 +163,7 @@ namespace DefaultNamespace
                                     KillThisLevel();
                                     DoLevel();
                                 }
-                                
+                                door.RevealAnimation(0f,rightGuess);
                                 
                                 TweenHolder.NewTween(.5f,duringAction: (alpha) =>
                                 {
@@ -202,6 +202,9 @@ namespace DefaultNamespace
                                 {
                                     _carrotHolder.ChangeCarrots(_carrotHolder.CarrotNumber-1);
                                 }
+                                
+                                door.RevealAnimation(0f,rightGuess);
+                                
                                 
                                 TweenHolder.NewTween(.5f,duringAction: (alpha) =>
                                 {
