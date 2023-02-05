@@ -29,6 +29,9 @@ namespace DefaultNamespace
         private Tween _nothingTween = null;
         private VisualElement _bubbleLayer;
         private int _pretextInDex = 0;
+        private CarrotHolder _carrotHolder;
+        private ButtonClickable _sadEnd;
+        private ButtonClickable _happyEnd;
         
         protected override void InitializeMain()
         {
@@ -68,7 +71,8 @@ namespace DefaultNamespace
 
             _nextButton = new NextButton(614f,1215f);
             _nextButton.SelectedFunction = NextButtonPressed;
-            
+            _carrotHolder = new CarrotHolder();
+            UIDocument.rootVisualElement.Add(_carrotHolder);
             DoLevel();
 
             
@@ -91,9 +95,9 @@ namespace DefaultNamespace
                 Application.Quit();
                 return;
             }
-            
+            sofaScript.ActivateVisual(-1);
             _thisLevel = DataBase.LevelRecordsArray[_levelIndex];
-            
+
             
             _headPicker = new HeadPicker(_thisLevel,614f,1215f)
             {
@@ -133,14 +137,46 @@ namespace DefaultNamespace
                         jukebox.gulpembe.Pause();
                         if (_thisLevel.Answer == selectedId)
                         {
-                            KillThisLevel();
+                            
                             _levelIndex += 1;
-                            DoLevel();
+                            if (_levelIndex >= DataBase.LevelRecordsArray.Length)
+                            {
+                                _happyEnd = new ButtonClickable("endings/good", Color.white, clickAction: () =>
+                                {
+                                    UIDocument.rootVisualElement.Remove(_happyEnd);
+                                    Replay();
+                                });
+                                _happyEnd.style.position = Position.Absolute;
+                                UIDocument.rootVisualElement.Add(_happyEnd);
+                            }
+                            else
+                            {
+                                KillThisLevel();
+                                DoLevel();
+                            }
+                            
 
                         }
                         else
                         {
                             _headPicker.FalseGuessFunction(selectedId);
+
+                            if (_carrotHolder.CarrotNumber <= 0)
+                            {
+                                
+                                _sadEnd = new ButtonClickable("endings/sad", Color.white, clickAction: () =>
+                                {
+                                    UIDocument.rootVisualElement.Remove(_sadEnd);
+                                    Replay();
+                                });
+                                _sadEnd.style.position = Position.Absolute;
+                                UIDocument.rootVisualElement.Add(_sadEnd);
+                            }
+                            else
+                            {
+                                _carrotHolder.ChangeCarrots(_carrotHolder.CarrotNumber-1);
+                            }
+                            
                             Debug.Log("failure");
                         }
                         
@@ -194,6 +230,7 @@ namespace DefaultNamespace
             if (_pretextInDex < 0)
             {
                 UIDocument.rootVisualElement.Add(_headPicker);
+                
                 UIDocument.rootVisualElement.Remove(_nextButton);
                 _textBox.ChangeText(_thisLevel.Clues);
                 sofaScript.ActivateVisual(_levelIndex);
@@ -302,6 +339,12 @@ namespace DefaultNamespace
             }
         }
         
-        
+        private void Replay()
+        {
+            _pretextInDex = 0;
+            _carrotHolder.ChangeCarrots(3);
+            KillThisLevel();
+            DoLevel();
+        }
     }
 }
