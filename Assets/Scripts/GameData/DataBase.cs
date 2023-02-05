@@ -45,7 +45,7 @@
                     "karahalka","ogulcan","sümbül","cabbar",
                     "diken","altintekme","saban","ramazan",
                     "abuzer","recep","tosun","nisa"},
-                "Köyden göçeli kaç yıl oldu bilmiyorum ama köylümü arıyorum\nÇetin Abi. Görüşmeyeli mevsimler geçti, hiç de haber göndermedi\nama ben ona küsmedim. Dün yine oyunlarımızı andım... Köy\nmeydanında şafak vakti düelloları oynardık. Çok özledim be\narkadaşım, bir haber yolla!",
+                "Köyden göçeli kaç yıl oldu bilmiyorum ama köylümü arıyorum\nÇetin Abi. Görüşmeyeli mevsimler geçti, hiç de haber göndermedi\nama ben ona küsmedim. Dün yine oyunlarımızı andım... Beraber\nRed Kit izleyip köy meydanında vahşi batı düelloları yapardık.\nÇok özledim be arkadaşım, bir haber yolla!",
                 "ramazan", new string[] {"Hani derler ya, geldiğin yöreleri unutmayacaksın diye. Son\nkonuğumuz da biraz bunu söylemek için burada. Köylüsüyle\nbuluşmak için yol iz bilmeden buralara kadar gelen\nNecmi Bey'e gelsin alkışlar!"},new string[] {})
 
         };
