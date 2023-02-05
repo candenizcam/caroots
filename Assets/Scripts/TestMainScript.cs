@@ -33,6 +33,7 @@ namespace DefaultNamespace
         private ButtonClickable _sadEnd;
         private ButtonClickable _happyEnd;
         private Action _otherNextAction;
+        public BunScript bunScript;
         
         protected override void InitializeMain()
         {
@@ -166,7 +167,7 @@ namespace DefaultNamespace
                                     _happyEnd = new ButtonClickable("endings/good", Color.white, clickAction: () =>
                                     {
                                         UIDocument.rootVisualElement.Remove(_happyEnd);
-                                        _levelIndex = 0;
+                                        
                                         Replay();
                                     });
                                     _happyEnd.style.position = Position.Absolute;
@@ -240,6 +241,7 @@ namespace DefaultNamespace
                         
                         UIDocument.rootVisualElement.Add(_nextButton);
                         _textBox.ChangeText(t);
+                        bunScript.GoTalk();
                         _textBox.UpDownAnimation(1f);
                         
 
@@ -301,6 +303,7 @@ namespace DefaultNamespace
                 if (_thisLevel.PreText.Length > _pretextInDex)
                 {
                     _textBox.ChangeText(_thisLevel.PreText[_pretextInDex]);
+                    bunScript.GoTalk();
                 }
                 else
                 {
@@ -347,7 +350,6 @@ namespace DefaultNamespace
                 x.PossibleLevels.Length == 0 || x.PossibleLevels.Any(y => y == _thisLevel.Id)).ToList();
 
             var random = possibles.PickRandom();
-            Debug.Log($"{random.Id}");
             RecursiveTextBoxer(0,random);
             
         }
@@ -357,6 +359,11 @@ namespace DefaultNamespace
             _nothingWaiter = false;
             if (flavius.FlavourTextBoxes.Length > index)
             {
+                if (flavius.FlavourTextBoxes[index].TextPos == FlavourTextPos.Host)
+                {
+                    bunScript.GoTalk();
+                }
+                
                 var n = new SpeechBubble(flavius.FlavourTextBoxes[index]);
                 _bubbleLayer.Add(n);
                 var nt = new Tween(4f,exitAction: () =>
@@ -400,6 +407,7 @@ namespace DefaultNamespace
         
         private void Replay()
         {
+            _levelIndex = 0;
             _pretextInDex = 0;
             _carrotHolder.ChangeCarrots(3);
             KillThisLevel();
