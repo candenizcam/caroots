@@ -1,4 +1,6 @@
-﻿namespace DefaultNamespace.GameData
+﻿using System;
+
+namespace DefaultNamespace.GameData
 {
     public static class DataBase
     {
@@ -29,52 +31,28 @@
                 "abuzer","recep","tosun","nisa"},
                 "Çetin Bey bana bu şansı verdiğin için sana şükürler olsun! Asla\nunutamam o lanet günü.Yağmur sonrası hava almaya çıkmıştık\nyapışık ikiz kardeşimle... Çıkmaz olaydık! Bir kuş saldırısı\nvücutlarımızı ayırdı, su başmış sokakta farklı taraflara\nsavrulduk. O hep denize meraklıydı, korsan filmleri izlerdi\ntüm gün, yüzdü gitti. Bense battım sulara ve kayboldum..",
                 "karahalka", new string[] {"İyi akşamlar, sevgili konuklar ve ekran başındaki izleyiciler!\nBen Çetin Tavşanoğlu, ama arkadaşlarım bana Tavşan Ç der.\nFilm gibi hayatların köklerini aradığımız programa,\nCa-Root'a hoşgeldiniz!","Bu akşam ve her akşam konuklarımız bu koltukta oturup hayat\nhikayelerini anlatacak koptukları kökleri bulmaya çalışacaklar.\nSonra da iş bizlere düşecek. Anlatımlarına göre\nkapıdan kimin gelmesi gerektiğini bulacağız.","Eğer doğru bulabilirsek kapı açıldığında stüdyomuzda\nbuluşacaklar ve hasretleri bitecek.\nEğer program bitmeden bulamazsak,\nmaalesef evlerine kolları boş dönecekler.\nHazırsak, ilk konuğumuz gelsin!","İlk konuğumuzun inanılmaz acıklı bir hikayesi var. Sadece\nhayatından değil vücudundan da kopup gitmiş birini,\nikiz kardeşini arıyor. Alkışlarınızla Solucanan Hanım!"},new string[] {}
-                ,new FlavourText("a20",new string[] // bu örnek için, bunu dğeiştir
-                {
-                
-                },new[]
-                {
-                    new FlavourTextBox(FlavourTextPos.Host, "Yine ekonomik kriz","yine yoksulluk. Havuç","aslanın ağzında","gerçekten.")
-                })),
+                ,""),
             new("cater",new[] {
                     "karahalka","ogulcan","sümbül","cabbar",
                     "diken","altintekme","saban","ramazan",
                     "abuzer","recep","tosun","nisa"},
                 "Buraya başvurmaya çekindim Çetin Bey ama dayanamadım, dostumu\nçok özledim. Çocukluk arkadaşıyız biz, birlikte büyüdük,\nbirlikte ne yapraklar yedik! Ama son zamanlarda o çok değişti,\nbambaşka birine dönüştü.Paşamın burnu havalarda! O masum\nmahalle çocuğu gitti, yerini gösterişli biri aldı. Böyle lüks\nkılıklar, aksesuarlar falan...",
                 "sümbül", new string[] {"Hayat bu, en kandan candan yakınları bile yol ayrımlarıyla\nbambaşka yerlere gönderebiliyor. Sıradaki konuğumuzun hikayesi\nde böyle bir hikaye. Bambaşka hayatlar yaşayan eski\ndostuyla tekrar görüşmek isteyen Yaşar Bey gelsin!"},new string[] {},
-                new FlavourText("a20",new string[] // bu örnek için, bunu dğeiştir
-                {
-                
-                },new[]
-                {
-                    new FlavourTextBox(FlavourTextPos.Host, "Yine ekonomik kriz","yine yoksulluk. Havuç","aslanın ağzında","gerçekten.")
-                })),
+                ""),
             new("turtle",new[] {
                     "karahalka","ogulcan","sümbül","cabbar",
                     "diken","altintekme","saban","ramazan",
                     "abuzer","recep","tosun","nisa"},
                 "Buraya, genç bir ninja olduğum günlerden olan ustamı aramaya\ngeldim Çetin Bey. O bizi lağımlardan topladı ve eğitti. Ben ve\nkardeşlerim ona herşeyi borçluyuz. Onun sopasından çok dayak\nyedik ama onun elinden de çok peynir yedik. Yaşlı ustamı\ntekrar görüp elini öpmek istiyorum!",
                 "diken", new string[] {"En çok da en kötü durumlardan bizi çekip kurtaran köklerimizi\nunutmamak lazım. Bizi büyütüp eğitenlere sonsuz teşekkür\nborçluyuz. İsrafil Bey de kendisini ve kardeşlerini yetiştiren\ndeğerli bir büyüğünü arıyor, umuyoruz ki beraber bulacağız."},new string[] {},
-                new FlavourText("a20",new string[] // bu örnek için, bunu dğeiştir
-                {
-                
-                },new[]
-                {
-                    new FlavourTextBox(FlavourTextPos.Host, "Yine ekonomik kriz","yine yoksulluk. Havuç","aslanın ağzında","gerçekten.")
-                })),
+               ""),
             new("rooster",new[] {
                     "karahalka","ogulcan","sümbül","cabbar",
                     "diken","altintekme","saban","ramazan",
                     "abuzer","recep","tosun","nisa"},
                 "Köyden göçeli kaç yıl oldu bilmiyorum ama köylümü arıyorum\nÇetin Abi. Görüşmeyeli mevsimler geçti, hiç de haber göndermedi\nama ben ona küsmedim. Dün yine oyunlarımızı andım... Beraber\nRed Kit izleyip köy meydanında vahşi batı düelloları yapardık.\nÇok özledim be arkadaşım, bir haber yolla!",
                 "ramazan", new string[] {"Hani derler ya, geldiğin yöreleri unutmayacaksın diye. Son\nkonuğumuz da biraz bunu söylemek için burada. Köylüsüyle\nbuluşmak için yol iz bilmeden buralara kadar gelen\nNecmi Bey'e gelsin alkışlar!"},new string[] {},
-                new FlavourText("a20",new string[] // bu örnek için, bunu dğeiştir
-                {
-                
-                },new[]
-                {
-                    new FlavourTextBox(FlavourTextPos.Host, "Yine ekonomik kriz","yine yoksulluk. Havuç","aslanın ağzında","gerçekten.")
-                }))
+                "")
 
         };
 
@@ -232,15 +210,8 @@
         };
 
 
-        public static FlavourText[] NotFoundTexts = new[]
+        public static string[] NotFoundTexts = new string[]
         {
-            new FlavourText("a20",new string[] // bu örnek için, bunu dğeiştir
-            {
-                
-            },new[]
-            {
-                new FlavourTextBox(FlavourTextPos.Host, "Yine ekonomik kriz","yine yoksulluk. Havuç","aslanın ağzında","gerçekten.")
-            })
         };
     }
 }
