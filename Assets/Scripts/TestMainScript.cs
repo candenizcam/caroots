@@ -17,6 +17,7 @@ namespace DefaultNamespace
 
         private TextBox _textBox;
         private HeadPicker _headPicker;
+        private NextButton _nextButton;
         private LevelRecord _thisLevel;
         public SoundScript jukebox;
         public DoorScript door;
@@ -27,11 +28,12 @@ namespace DefaultNamespace
         private bool _nothingWaiter = false;
         private Tween _nothingTween = null;
         private VisualElement _bubbleLayer;
+        private int _pretextInDex = 0;
         
         protected override void InitializeMain()
         {
             
-            
+            Debug.Log("warning, this game may not work in all browsers, we tried and it works on edge & safari, and we are sorry if it doesn't for you. Also hello, thanks for trying our game.");
             
             UIDocument.rootVisualElement.style.paddingBottom = Constants.UnsafeBottomUi;
             UIDocument.rootVisualElement.style.paddingTop = Constants.UnsafeTopUi;
@@ -51,6 +53,9 @@ namespace DefaultNamespace
             
             UIDocument.rootVisualElement.Add(frame);
 
+            _nextButton = new NextButton(614f,1215f);
+            _nextButton.SelectedFunction = NextButtonPressed;
+            
             DoLevel();
 
             
@@ -75,8 +80,8 @@ namespace DefaultNamespace
             }
             
             _thisLevel = DataBase.LevelRecordsArray[_levelIndex];
-            sofaScript.ActivateVisual(_levelIndex);
-            door.ActivateVisual(_levelIndex);
+            
+            
             _headPicker = new HeadPicker(_thisLevel,614f,1215f)
             {
                 
@@ -151,15 +156,55 @@ namespace DefaultNamespace
             {
                 
             };
-            _textBox.ChangeText(_thisLevel.Clues);
             
+            _pretextInDex = -1;
             UIDocument.rootVisualElement.Add(_textBox);
-            UIDocument.rootVisualElement.Add(_headPicker);
+            if (_thisLevel.PreText.Length > 0)
+            {
+                _pretextInDex = 0;
+                StarterTexts();
+            }
+            else
+            {
+                
+                UIDocument.rootVisualElement.Add(_headPicker);
+            }
+            
+            
         }
 
         private void StarterTexts()
         {
-            
+            if (_pretextInDex < 0)
+            {
+                UIDocument.rootVisualElement.Add(_headPicker);
+                UIDocument.rootVisualElement.Remove(_nextButton);
+                _textBox.ChangeText(_thisLevel.Clues);
+                sofaScript.ActivateVisual(_levelIndex);
+                door.ActivateVisual(_levelIndex);
+            }
+            else
+            {
+                
+                if (_pretextInDex == 0)
+                {
+                    UIDocument.rootVisualElement.Add(_nextButton);
+                }
+
+                if (_thisLevel.PreText.Length > _pretextInDex)
+                {
+                    _textBox.ChangeText(_thisLevel.PreText[_pretextInDex]);
+                }
+                else
+                {
+
+                    _pretextInDex = -1;
+                    StarterTexts();
+                }
+                
+                
+                
+            }
         }
 
         private void CameraPan(float alpha)
@@ -176,7 +221,6 @@ namespace DefaultNamespace
 
                 if (_nothingTimer >= _nothingTrigger)
                 {
-                    Debug.Log("işsiz işsiz oturuyo");
                     _nothingTimer = 0f;
                     NothingAction();
                 }
@@ -227,6 +271,15 @@ namespace DefaultNamespace
                 TweenHolder.RemoveTween(_nothingTween);
                 _bubbleLayer.Clear();
                 _nothingTween = null;
+            }
+        }
+
+        public void NextButtonPressed()
+        {
+            if (_pretextInDex >= 0)
+            {
+                _pretextInDex+=1;
+                StarterTexts();
             }
         }
         
