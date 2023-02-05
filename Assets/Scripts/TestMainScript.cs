@@ -141,7 +141,6 @@ namespace DefaultNamespace
                         },exitAction: () =>
                         {
                             jukebox.ayyuzlu.Play();
-                            _nothingWaiter = true;
                         });
                         
                     });
@@ -154,7 +153,10 @@ namespace DefaultNamespace
 
             _textBox = new TextBox(1214f, 264f)
             {
-                
+                style =
+                {
+                    backgroundColor = Color.white
+                }
             };
             
             _pretextInDex = -1;
@@ -175,6 +177,7 @@ namespace DefaultNamespace
 
         private void StarterTexts()
         {
+            _nothingWaiter = false;
             if (_pretextInDex < 0)
             {
                 UIDocument.rootVisualElement.Add(_headPicker);
@@ -182,6 +185,7 @@ namespace DefaultNamespace
                 _textBox.ChangeText(_thisLevel.Clues);
                 sofaScript.ActivateVisual(_levelIndex);
                 door.ActivateVisual(_levelIndex);
+                _nothingWaiter = true;
             }
             else
             {
@@ -197,6 +201,7 @@ namespace DefaultNamespace
                 }
                 else
                 {
+                    
 
                     _pretextInDex = -1;
                     StarterTexts();
