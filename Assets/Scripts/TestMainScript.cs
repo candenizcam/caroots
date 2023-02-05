@@ -168,7 +168,7 @@ namespace DefaultNamespace
             {
                 style =
                 {
-                    backgroundColor = Color.white
+                    backgroundColor = new Color(1f, 1f, 0.8f)
                 }
             };
             
