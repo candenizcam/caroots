@@ -17,7 +17,7 @@ namespace DefaultNamespace
             style.width = 1920f;
             style.height = 1080f;
             style.position = Position.Absolute;
-            style.backgroundImage = QuickAccess.LoadSpriteBg("ui/tv");
+            style.backgroundImage = QuickAccess.LoadSpriteBg("ui/tv 1");
 
 
             _dantel = new ButtonClickable("ui/credits", Color.gray, ButtonFunction);
