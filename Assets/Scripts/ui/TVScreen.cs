@@ -1,5 +1,6 @@
 ﻿using System;
 using Punity.ui;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -25,12 +26,37 @@ namespace DefaultNamespace
             frame.style.height = 1080f;
             frame.style.backgroundImage = QuickAccess.LoadSpriteBg("ui/tv 1");
             frame.style.position = Position.Absolute;
+
+            var black1 = new VisualElement
+            {
+                style =
+                {
+                    width = 1920f,
+                    height = 1080f,
+                    position = Position.Absolute,
+                    left = 0f,
+                    top = -1080f,
+                    backgroundColor = Color.black
+                }
+            };
             
+            var black2 = new VisualElement
+            {
+                style =
+                {
+                    width = 1920f,
+                    height = 1080f,
+                    position = Position.Absolute,
+                    left = 0f,
+                    bottom = -1080f,
+                    backgroundColor = Color.black
+                }
+            };
 
 
-            _dantel = new ButtonClickable("ui/credits", Color.gray, ButtonFunction);
+            _dantel = new ButtonClickable("ui/credits_button", Color.gray, ButtonFunction);
             _dantel.style.position = Position.Absolute;
-            _dantel.style.top = -300f;
+            _dantel.style.top = 0f;
             _dantel.style.left = 477f;
 
 
@@ -42,7 +68,8 @@ namespace DefaultNamespace
             _credits.visible = false;
             Add(_credits);
             Add(frame);
-            
+            Add(black1);
+            Add(black2);
             Add(_dantel);
         }
 

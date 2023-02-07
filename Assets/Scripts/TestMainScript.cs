@@ -40,10 +40,12 @@ namespace DefaultNamespace
             
             Debug.Log("warning, this game may not work in all browsers, we tried and it works on edge & safari, and we are sorry if it doesn't for you. Also hello, thanks for trying our game.");
             
-            UIDocument.rootVisualElement.style.paddingBottom = Constants.UnsafeBottomUi;
-            UIDocument.rootVisualElement.style.paddingTop = Constants.UnsafeTopUi;
+            UIDocument.rootVisualElement.style.marginBottom = (Constants.UiHeight-1080f) * 0.5f;
+            UIDocument.rootVisualElement.style.marginTop = (Constants.UiHeight-1080f) * 0.5f;
             UIDocument.rootVisualElement.style.marginLeft = (Constants.UiWidth-1920f) * 0.5f;
             UIDocument.rootVisualElement.style.marginRight = (Constants.UiWidth-1920f) * 0.5f;
+            
+            Debug.Log($"{Constants.WorldSize.width}, {Constants.WorldSize.height}");
             Application.targetFrameRate = 60;
 
             var frame = new TVScreen();
